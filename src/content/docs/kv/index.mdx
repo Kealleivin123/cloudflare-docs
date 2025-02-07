@@ -40,9 +40,38 @@ Workers KV is ideal for projects that require:
 - High volumes of reads and/or repeated reads to the same keys.
 - Globally distributed data.
 
-**Code examples**
+Access your Workers KV namespace from Cloudflare Workers using the Workers Binding API or from your external application using the REST API:
 
 <Tabs>
+<TabItem label="Workers Binding API">
+```ts
+export default {
+	async fetch(request, env, ctx): Promise<Response> {
+
+		//write a key-value pair
+		await env.KV_BINDING.put('KEY', 'VALUE');
+
+		// read a key-value pair
+		const value = await env.KV_BINDING.get('KEY');
+
+		//list all key-value pairs
+		const allKeys = await env.KV_BINDING.list();
+
+		//delete a key-value pair
+		await env.KV_BINDING.delete('KEY');
+
+		//return a Workers response
+		return new Response(
+			JSON.stringify({
+				value: value,
+				allKeys: allKeys,
+			}),
+		);
+	},
+};
+
+```
+</TabItem>
 <TabItem label="REST API">
 ```
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
@@ -57,58 +86,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namesp
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/values/$KEY_NAME \
     -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
     -H "X-Auth-Key: $CLOUDFLARE_API_KEY"
-```
-</TabItem>
-<TabItem label="Workers Binding API">
-```ts
-export interface Env {
-	YOUR_BINDING: KVNamespace;
-}
-
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-
-		//write a key-value pair
-		await env.YOUR_BINDING.put('KEY', 'VALUE');
-
-		// read a key-value pair
-		const value = await env.YOUR_BINDING.get('KEY');
-
-		//list all key-value pairs
-		const allKeys = await env.YOUR_BINDING.list();
-
-		//delete a key-value pair
-		await env.YOUR_BINDING.delete('KEY');
-
-		//return a Workers response
-		return new Response(
-			JSON.stringify({
-				value: value,
-				allKeys: allKeys,
-			}),
-		);
-	},
-};
-
-```
-</TabItem>
-<TabItem label="wrangler.json">
-```json
-{
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "WORKER-NAME",
-	"main": "src/index.ts",
-	"compatibility_date": "2025-02-04",
-	"observability": {
-		"enabled": true
-	},
-
-	"kv_namespaces": [
-		{
-			"binding": "YOUR_BINDING",
-			"id": "<YOUR_BINDING_ID>"
-		}
-	]
 ```
 </TabItem>
 </Tabs>
