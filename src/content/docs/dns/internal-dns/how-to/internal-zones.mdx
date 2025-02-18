@@ -8,7 +8,7 @@ sidebar:
 
 import { Example } from "~/components";
 
-Internal DNS zones are groupings of internal DNS records. While [public DNS records](/dns/manage-dns-records/) contain information about resources that you want to be available to the public Internet, internal DNS records allow you to manage resources that should only be available within your private network.
+Internal DNS zones are groupings of internal DNS records. While [public DNS records](/dns/manage-dns-records/) contain information about resources that you want to make available to the public Internet, internal DNS records allow you to manage resources that should only be available within your private network.
 
 Internal DNS zones do not get assigned Cloudflare nameservers and can only be queried via [Cloudflare Gateway](/cloudflare-one/policies/gateway/) when linked to a [DNS view](/dns/internal-dns/how-to/dns-views/). The Gateway configuration must exist within the same Cloudflare account where the internal zone exists.
 
@@ -36,7 +36,7 @@ Since the resolver policy configuration will require a view, you must link the i
 
 During an [internal DNS query resolution](/dns/internal-dns/#architecture-overview), if no internal record is found within a matching internal zone, Cloudflare will check if the matching internal zone is referencing another internal zone.
 
-To configure a reference zone to be used in such cases, do the following, use the [Update DNS settings](/api/resources/dns/subresources/settings/methods/edit/) endpoint. In `--data`, specify the `internal_dns` object with the parameter `reference_zone_id`.
+To configure a reference zone to be used in such cases, use the [Update DNS settings](/api/resources/dns/subresources/settings/methods/edit/) endpoint. In `--data`, specify the `internal_dns` object with the parameter `reference_zone_id`.
 
 <Example>
 In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`) is referencing internal zone B (ID `8e64c6fb4b514f3faf64de81efc11e51`).
@@ -44,4 +44,11 @@ In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`
 TBD > add full API call example using IDs mentioned above
 </ Example>
 
-## Delete an internal zone
+## Other actions
+
+The API endpoints to manage internal zones are the same as for managing public zones. The main difference is that the zone type must be set to `internal`. Refer to the API documentation below for details:
+
+- [Update an internal zone (`PATCH`)](/api/resources/zones/methods/edit/)
+- [Get internal zone details (`GET`)](/api/resources/zones/methods/get/)
+- [List internal zones (`GET`)](/api/resources/zones/methods/list/)
+- [Delete an internal zone (`DELETE`)](/api/resources/zones/methods/delete/)
