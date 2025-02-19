@@ -40,7 +40,7 @@ Although there are some steps that can be achieved on the dashboard, currently t
 
 ## 1. Set up your internal DNS zone
 
-1. Use the [Create Zone](/api/resources/zones/) endpoint to create an internal zone. Specify your account ID and set the `type` to `internal`.
+1. Use the [Create Zone](/api/resources/zones/) endpoint to create an [internal zone](/dns/internal-dns/internal-zones/). Specify your account ID and set the `type` to `internal`.
 
 <Details header="Internal zone configuration conditions">
 <Render file="internal-zones-conditions" />
@@ -61,7 +61,7 @@ Although there are some steps that can be achieved on the dashboard, currently t
 
 ## 2. Link your internal zone to a view
 
-Since the resolver policy will require a view, you must have at least one view to be able to route requests to Internal DNS.
+Since the resolver policy will require a [view](/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to Internal DNS.
 
 1. Use the [Create Internal DNS View](/api/resources/dns/subresources/settings/subresources/views/methods/create/) endpoint. For each view you create, list all the internal zones that should be grouped under that view.
 
