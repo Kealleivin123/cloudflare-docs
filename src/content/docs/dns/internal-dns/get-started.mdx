@@ -56,19 +56,7 @@ Although there are some steps that can be achieved on the dashboard, currently t
 1. Use the [Update DNS settings](/api/resources/dns/subresources/settings/methods/edit/) endpoint to add a reference from an internal zone to another internal zone. In `--data`, specify the `internal_dns` object with the parameter `reference_zone_id`.
 
 <Example>
-In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`) is referencing internal zone B (ID `8e64c6fb4b514f3faf64de81efc11e51`).
-
-```bash
-curl --request PATCH \
-https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f3/dns_settings \
---header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
---header "Content-Type: application/json" \
---data '{
-    "internal_dns": {
-        "reference_zone_id": "8e64c6fb4b514f3faf64de81efc11e51D"
-    }
-  }'
-```
+<Render file="internal-reference-zone-api"/>
 </ Example>
 
 ## 2. Link your internal zone to a view

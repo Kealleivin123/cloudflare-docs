@@ -35,9 +35,7 @@ During an [internal DNS query resolution](/dns/internal-dns/#architecture-overvi
 To configure a reference zone to be used in such cases, use the [Update DNS settings](/api/resources/dns/subresources/settings/methods/edit/) endpoint. In `--data`, specify the `internal_dns` object with the parameter `reference_zone_id`.
 
 <Example>
-In the following example, internal zone A (ID `8a904aeb565c42cfa207d98f6edea2f3`) is referencing internal zone B (ID `8e64c6fb4b514f3faf64de81efc11e51`).
-
-TBD > add full API call example using IDs mentioned above
+<Render file="internal-reference-zone-api"/>
 </ Example>
 
 ## Other actions
