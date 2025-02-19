@@ -6,7 +6,7 @@ sidebar:
   label: Views
 ---
 
-import { Details } from "~/components";
+import { Details, Render } from "~/components";
 
 Internal DNS views are logical groupings of [internal DNS zones](/dns/internal-dns/how-to/internal-zones/). As explained in the [architecture overview](/dns/internal-dns/#architecture-overview), DNS views are referenced by [Gateway resolver policies](/cloudflare-one/policies/gateway/resolver-policies/) to define how a specific query should be resolved.
 
@@ -16,9 +16,7 @@ Refer to the sections below for details on how to manage your DNS views, or cons
 
 When setting up DNS views, observe the following conditions:
 
-- DNS views can be empty, with no [internal zones](/dns/internal-dns/how-to/internal-zones/) linked to them.
-- A DNS view cannot contain public DNS zones[^1].
-- Each internal DNS zone name must be unique within a given DNS view.
+<Render file="internal-dns-view-conditions" />
 
 ## Create a view
 
@@ -37,5 +35,3 @@ It is also possible to delete a DNS view that is being referenced by a Gateway r
 - [Update a DNS view](/api/resources/dns/subresources/settings/subresources/views/methods/edit/) (`PATCH`)
 - [Get view details](/api/resources/dns/subresources/settings/subresources/views/methods/get/) (`GET`)
 - [List DNS views](/api/resources/dns/subresources/settings/subresources/views/methods/list/) (`GET`)
-
-[^1]: DNS zones that contain public DNS records and are accessible by public resolvers.
