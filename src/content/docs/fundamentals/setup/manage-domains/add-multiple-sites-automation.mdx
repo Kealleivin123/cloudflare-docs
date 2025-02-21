@@ -1,24 +1,4 @@
----
-pcx_content_type: tutorial
-source: https://support.cloudflare.com/hc/articles/360000841472
-title: Add multiple sites via automation
----
-
-import { Render } from "~/components";
-
-To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
-
-Adding multiple sites can be useful when you:
-
-- Have multiple domains mapping back to a single, canonical domain (common for domains in different countries - such as `.com.au`, `.co.uk` - that you want protected by Cloudflare).
-- Are a [partner](https://www.cloudflare.com/partners/), agency, or IT consultancy, and manage multiple domains on behalf of your customers.
-- Are moving an existing set of sites over to Cloudflare.
-
-Using the API will allow you to add multiple sites quickly and efficiently, especially if you are already familiar with [how to change your name-servers](/dns/zone-setups/full-setup/setup/) or [add a DNS record](/dns/manage-dns-records/how-to/create-dns-records/).
-
-This tutorial assumes domains will be added using [full mode](/dns/zone-setups/full-setup/).
-
----
+---\npcx_content_type: tutorial\nsource: https://support.cloudflare.com/hc/articles/360000841472\ntitle: Add multiple sites via automation\ndescription: Automate adding multiple sites to Cloudflare using the API. Ideal for managing numerous domains efficiently, especially for partners and IT consultancies.\n---\n\nimport { Render } from "~/components";\n\nTo add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.\n\nAdding multiple sites can be useful when you:\n\n- Have multiple domains mapping back to a single, canonical domain (common for domains in different countries - such as `.com.au`, `.co.uk` - that you want protected by Cloudflare).\n- Are a [partner](https://www.cloudflare.com/partners/), agency, or IT consultancy, and manage multiple domains on behalf of your customers.\n- Are moving an existing set of sites over to Cloudflare.\n\nUsing the API will allow you to add multiple sites quickly and efficiently, especially if you are already familiar with [how to change your name-servers](/dns/zone-setups/full-setup/setup/) or [add a DNS record](/dns/manage-dns-records/how-to/create-dns-records/).\n\nThis tutorial assumes domains will be added using [full mode](/dns/zone-setups/full-setup/).\n\n---
 
 ## Prerequisites
 
