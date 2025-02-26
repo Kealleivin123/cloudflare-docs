@@ -126,6 +126,16 @@ const props = {
 			}
 		}
 
+		const url = new URL(window.location.href);
+
+		if (value === "all") {
+			url.searchParams.delete("product");
+		} else {
+			url.searchParams.set("product", value);
+		}
+
+		history.replaceState(null, "", url.href);
+
 		hideButton();
 	});
 
