@@ -3,7 +3,6 @@ import { getContainerRenderer } from "@astrojs/mdx";
 import { loadRenderers } from "astro:container";
 import { render, type CollectionEntry } from "astro:content";
 import type { AstroComponentFactory } from "astro/runtime/server/index.js";
-import type { AstroGlobal } from "astro";
 
 export async function entryToString(
 	entry: CollectionEntry<"docs" | "changelog">,
