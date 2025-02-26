@@ -104,7 +104,7 @@ const PRODUCT_AREA_OG_IMAGES: Record<string, string> = {
 	"application security": "/core-services-preview.png",
 };
 
-export async function getOgImage(entry: CollectionEntry<"docs">) {
+export async function getOgImage(entry: CollectionEntry<"docs" | "changelog">) {
 	if (entry.data.cover) {
 		if (!entry.data.cover.src) {
 			throw new Error(
