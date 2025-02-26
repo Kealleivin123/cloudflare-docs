@@ -29,3 +29,9 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 }
 
 ```
+
+### Parameters
+
+- `url` _(string)_ - The URL of the webpage to extract content from.
+- `rejectResourceTypes` _(array)_ - Blocks specific resource types such as images, fonts from loading to improve performance.
+- `rejectRequestPattern` _(array of regex patterns)_ - Prevents loading of resources matching specified patterns such as CSS files.

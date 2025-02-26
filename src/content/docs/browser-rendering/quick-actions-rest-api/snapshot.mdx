@@ -66,3 +66,22 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 	}
 }
 ```
+
+## Parameters
+
+- `url` _(string)_ - The URL of the page to snapshot.
+- `html` _(string)_ - Allows passing custom HTML instead of a URL.
+- `setJavaScriptEnabled` _(boolean)_ - Enables or disables JavaScript execution on the page.
+- `viewport` \*(object)- Sets the rendering viewport dimensions.
+  - `width` _(number)_ - Width in pixels.
+  - `height` _(number)_ - Height in pixels.
+- `gotoOptions` _(object)_ - Determines when the page is fully loaded.
+  - `waitUntil` _(string)_ - Defines the loading strategy (`domcontentloaded`, `networkidle2`).
+  - `timeout` _(number)_ - Timeout duration in milliseconds.
+- `allowResourceTypes` _(array of strings)_ - Restricts the types of resources allowed to load.
+  - Example: [`document`, `script`] - Only allows HTML documents and scripts to load, preventing images, stylesheets, and other resources.
+
+### Response fields
+
+- `screenshot` _(string)_ - Base64-encoded image of the rendered page.
+- `content` _(string)_ - Fully rendered HTML of the page.

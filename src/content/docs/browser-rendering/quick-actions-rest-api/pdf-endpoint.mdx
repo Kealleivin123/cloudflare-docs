@@ -60,3 +60,20 @@ curl -X POST https://api.cloudflare.com/client/v4/accounts/<acccountID>/browser-
 }' \
   --output "cloudflare.pdf"
 ```
+
+## Parameters
+
+- `url` _(string)_ - The webpage URL to render as a PDF.
+- `addStyleTag` _(array of objects)_ - Injects custom CSS before generating the PDF.
+  - `content` _(string)_ - Inline CSS styles.
+  - `url` _(string)_ - URL of an external stylesheet.
+- `setExtraHTTPHeaders` _(object)_ - Adds custom HTTP headers when making the request.
+  - `X-Custom-Header` _(string)_ - Example of a custom header.
+- `viewport` _(object)_ - Defines the browser viewport size.
+  - `width` _(number)_ - Viewport width in pixels.
+  - `height` _(number)_ - Viewport height in pixels.
+- `gotoOptions` _(object)_ - Configures page navigation settings.
+  - `waitUntil` _(string)_ - Defines when the browser considers the page fully loaded.
+  - `timeout` _(number)_ - Maximum wait time before failing the request.
+- `rejectResourceTypes` _(array)_ - Blocks specific resource types to improve rendering performance.
+- `rejectRequestPattern` _(array of regex patterns)_ - Prevents loading of resources matching certain patterns.

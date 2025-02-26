@@ -71,3 +71,25 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
   }' \
   --output "screenshot.webp"
 ```
+
+## Parameters
+
+- `url` _(string)_ - The webpage URL to take a screenshot of.
+- `html` _(string)_ - Instead of a URL, allows rendering custom HTML for the screenshot.
+- `screenshotOptions` _(object)_ - Configures the screenshot format and quality.
+  - `type` _(string)_ - Defines the image format (`jpeg`, `png`, `webp`).
+  - `omitBackground` _(boolean)_ - Removes the default white background when taking a screenshot.
+  - `quality` _(number)_ - (For JPEG/WebP) Compression quality from 0 to 100\.
+- `viewport` _(object)_ - Sets the browser viewport dimensions for rendering.
+  - `width` _(number)_ - Viewport width in pixels.
+  - `height` _(number)_ - Viewport height in pixels.
+- `gotoOptions` _(object)_ - Configures how and when the page is considered fully loaded.
+  - `waitUntil` _(string)_ - Defines when the browser considers navigation complete (`networkidle0`, `domcontentloaded`).
+    - `networkidle0` - Waits until there are no more than 0 network connections for at least 500ms before taking a screenshot.
+  - `timeout` _(number)_ - Maximum wait time (in milliseconds) before navigation times out.
+- `addScriptTag` _(array of objects)_ - Injects JavaScript code before taking a screenshot.
+  - `url` _(string)_ - Loads an external script file before rendering.
+  - `content` _(string)_ - Runs inline JavaScript before rendering.
+- `addStyleTag` _(array of objects)_ - Injects CSS styles before rendering.
+  - `content` _(string)_ - Defines inline CSS rules.
+  - `url` _(string)_ - Loads external stylesheets before rendering.
