@@ -1,0 +1,34 @@
+---
+title: Increased Browser Rendering limits!
+description: Browser Rendering now supports more concurrent browser sessions.
+products:
+  - browser-rendering
+date: 2025-02-26T10:00:00Z
+---
+
+We've released a new Quick Actions REST API for [Browser Rendering](/browser-rendering/) in open beta, making interacting with browsers easier than ever. This new API provides endpoints for common browser actions, with more to be added in the future.
+
+With the **Quick Actions REST API** you can:
+- **Capture screenshots** – Use `/screenshot` to take a screenshot of a webpage from provided URL or HTML. 
+- **Generate PDFs** – Use `/pdf` to convert web pages into PDFs.
+- **Extract HTML content** – Use `/content` to retrieve the full HTML from a page.
+ **Snapshot (HTML + Screenshot)** – Use `/screenshot` to capture both the page's HTML and a screenshot in one request 
+- **Scrape Web Elements** – Use `/scrape` to extract specific elements from a page.
+
+For example, to capture a screenshot:
+
+```bash title="Screenshot example"
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/screenshot' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "html": "Hello World!",
+    "screenshotOptions": {
+      "type": "webp",
+      "omitBackground": true
+    }
+  }' \
+  --output "screenshot.webp"
+```
+
+Learn more in our [documentation](/browser-rendering/quick-actions-rest-api/)
