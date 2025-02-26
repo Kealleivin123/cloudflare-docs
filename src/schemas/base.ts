@@ -1,5 +1,6 @@
 import { z } from "astro:schema";
 import { BadgeConfigSchema } from "./types/badge";
+import type { SchemaContext } from "astro:content";
 
 const spotlightAuthorDetails = z
 	.object({
@@ -12,7 +13,7 @@ const spotlightAuthorDetails = z
 		"These are used to automatically add the SpotlightAuthorDetails component to the page. Refer to https://developers.cloudflare.com/style-guide/components/spotlight-author-details/.",
 	);
 
-export const baseSchema = ({ image }) =>
+export const baseSchema = ({ image }: SchemaContext) =>
 	z.object({
 		cover: image().optional(),
 		pcx_content_type: z

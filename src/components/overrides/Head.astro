@@ -202,7 +202,7 @@ if (Astro.props.entry.data.external_link) {
 }
 
 const ogImagePath = await getOgImage(Astro.props.entry);
-const ogImageUrl = new URL(ogImagePath, Astro.site!.origin).toString();
+const ogImageUrl = new URL(ogImagePath, Astro.url.origin).toString();
 
 const ogImageTags = [
 	{
