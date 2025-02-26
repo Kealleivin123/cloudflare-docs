@@ -31,11 +31,11 @@ Cloudflare’s HTTP/2 multiplexing to origin reduces active connections by pooli
 
 ### Configuration
 
-Connection multiplexing is enabled by default on Free, Pro and Business zones and uses up to 100 concurrent streams by default. Enterprise plans, can explicitly configure the maximum number of concurrent streams (often called the “multiplexing ratio”) for a zone in the dashboard or via API.
+Connection multiplexing is enabled by default on Free, Pro and Business zones and uses up to 100 concurrent streams by default. Enterprise plans can explicitly configure the maximum number of concurrent streams (often called the “multiplexing ratio”) for a zone in the dashboard or via API.
 
 <Details header="Dashboard">
 
-1. Log into the [Cloudflare dashboard](https://dash.cloudflare.com/login) and select your account.
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/login) and select your account.
 2. Choose the domain that will use HTTP/2 to Origin.
 3. Select **Speed > Optimization**.
 4. Open the **Protocol Optimization** tab. 
@@ -46,12 +46,12 @@ Connection multiplexing is enabled by default on Free, Pro and Business zones an
 <Details header="API">
 
 ```bash
-curl https://api.cloudflare.com/client/v4/zones/<ZONE_ID>/settings/origin_h2_max_streams \
-    -X PATCH \
-    -H 'Content-Type: application/json' \
-    -H "X-Auth-Email: <CLOUDFLARE_EMAIL>" \
-    -H "X-Auth-Key: <CLOUDFLARE_API_KEY>" \
-    -d '{
+curl --request PATCH \
+https://api.cloudflare.com/client/v4/zones/<ZONE_ID>/settings/origin_h2_max_streams \
+--header 'Content-Type: application/json' \
+--header "X-Auth-Email: <CLOUDFLARE_EMAIL>" \
+--header "X-Auth-Key: <CLOUDFLARE_API_KEY>" \
+--data '{
       "value": <int>
     }'
 ```
